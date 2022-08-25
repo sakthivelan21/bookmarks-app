@@ -1,0 +1,80 @@
+.book-marks-list{
+    width: 90%;
+    margin:10px auto;
+    height: 450px;
+    overflow-y: auto;
+}
+
+.book-mark-container{
+    border: 1.5px solid var(--primary-button-border-color);
+    background-color: var(--primary-card-color);
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: 90%;
+    margin: 30px auto;
+    transition: .3s ease-in-out;
+}
+
+.time-indicator{
+    color: #ffffff69;
+    text-align: end;
+}
+
+.book-mark-container:hover{
+    transform: scale(1.05);
+}
+
+.book-mark-button{
+    background-color: transparent;
+    border: none;
+    margin: 5px;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 1.4rem;
+    color: var(--primary-font-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.book-mark-button h3
+{
+    margin:0px;
+    padding: 5px 8px;
+    border: 1px solid var(--primary-dark-pink);
+    background: var(--secondary-grey);
+    border-radius: 50%;
+}
+
+.favourite-icon{
+    color: gold;
+}
+
+.book-mark-title-holder{
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-mark-title{
+    text-align: center;
+}
+
+.book-mark-text{
+    width: 90%;
+    margin: 0 auto;
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width:630px) {
+    .book-mark-container{
+        width: 95%;
+    }
+    .book-mark-title-holder{
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .book-mark-buttons{
+        display: flex;
+        justify-content: flex-end;
+    }
+
+}

@@ -1,0 +1,24 @@
+.tabs-container{
+    display: flex;
+    border-bottom: 2px solid var(--primary-input-border-color);
+}
+
+.tab{
+    margin: 5px;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+.tab:hover{
+    background-color: var(--primary-number-button-hov-bg-color);
+}
+
+.current-tab{
+    background-color: var(--primary-number-button-hov-bg-color);
+}
+
+.current-tab:hover{
+    background-color: var(--primary-button-hov-bg-color);
+}
