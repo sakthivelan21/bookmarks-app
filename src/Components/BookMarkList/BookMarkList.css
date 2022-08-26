@@ -5,9 +5,18 @@
     overflow-y: auto;
 }
 
+.book-mark-center{
+    width: 60%;
+    margin: 30px auto;
+}
+.book-mark-center h3{
+    text-align: center;
+}
+
 .book-mark-container{
     border: 1.5px solid var(--primary-button-border-color);
     background-color: var(--primary-card-color);
+    box-shadow: 1px 1px 10px 1px var(--primary-box-shadow);
     border-radius: 5px;
     padding: 5px 10px;
     width: 90%;

@@ -2,7 +2,8 @@ import React from 'react';
 import './TabSwitcher.css';
 import BookMarkList from '../BookMarkList/BookMarkList';
 
-function TabSwitcher({tabs,handleEvent,bookMarksList,currentTabIndex}){
+function TabSwitcher({tabs,handleEvent,bookMarksList,currentTabIndex,updateBookMark,deleteBookMark,toggleUpdateBookMark}){
+    const noDataFoundText=['Add new Book Mark to View','Save a Book Mark as Favourite']
     return(
         <div className='tab-switcher-container'>
             <div className='tabs-container'>
@@ -14,9 +15,13 @@ function TabSwitcher({tabs,handleEvent,bookMarksList,currentTabIndex}){
                     )
                 }
             </div>
-            <BookMarkList bookMarksList={bookMarksList}/>
+            <BookMarkList bookMarksList={bookMarksList} 
+                    updateBookMark={updateBookMark}
+                    noDataFoundText={noDataFoundText[currentTabIndex]}
+                    toggleUpdateBookMark={toggleUpdateBookMark}
+                    deleteBookMark={deleteBookMark}/>
         </div>
     )
 }
 
-export default React.memo(TabSwitcher);
+export default TabSwitcher;

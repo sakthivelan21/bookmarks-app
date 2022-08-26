@@ -3,19 +3,16 @@ import Input from "../Input/Input";
 import Button from "../Button/Button";
 import "./BookMarkPopup.css";
 
-const initialValue={
-	title:'',
-	text:'',
-    isFavourite:false
-}
+
 
 const reducerFunction=(state,action)=>{
 	return{...state,[action.name]:action.value}
 }
 
-function BookMarkPopup({showPopup,closePopup,actionEvent}){
+function BookMarkPopup({showPopup,closePopup,actionEvent,initialValue,popupTitle,buttonText,iconClass,updateActionEvent}){
 
     const [bookMarkDetails,dispatchFunction]=useReducer(reducerFunction,initialValue);
+
 
 	const {title,text,isFavourite}=bookMarkDetails;
 
@@ -33,14 +30,20 @@ function BookMarkPopup({showPopup,closePopup,actionEvent}){
     }
     const submitHandler=(event)=>{
 		event.preventDefault();
-        console.log(bookMarkDetails);
-        actionEvent(bookMarkDetails);
+        const date = new Date();
+        bookMarkDetails['time']= date.toLocaleDateString()+" "+date.toLocaleTimeString();
+        if(buttonText==="update")
+            updateActionEvent(bookMarkDetails);
+        else 
+            actionEvent(bookMarkDetails);
 
     };
     useEffect(()=>{
 		if(inputRef.current)
             inputRef.current.focus();
-	},[]);
+        for(let key in initialValue)
+            dispatchFunction({'name':key,'value':initialValue[key]});
+	},[initialValue]);
     return(
         showPopup 
         &&  
@@ -51,7 +54,7 @@ function BookMarkPopup({showPopup,closePopup,actionEvent}){
                 </button>
             </div>
             <div className="pop-up-container">
-                <h3 className="pop-up-title">Add new Book Mark
+                <h3 className="pop-up-title">{popupTitle}
                     <button  className="book-mark-button" title='Favourite' onClick={()=>toggleFavouriteState()}>
                         <h3>
                             <i className={ isFavourite ? "fa-solid fa-star favourite-icon" : "fa-solid fa-star"}></i>
@@ -79,7 +82,7 @@ function BookMarkPopup({showPopup,closePopup,actionEvent}){
                                 </textarea>
                         </div>
                         <Button type="submit" classProp="button">
-							Login <i className="fas fa-sign-in-alt"></i>
+							{buttonText} <i className={iconClass}></i>
 						</Button>
                     </form>
                 </div>
